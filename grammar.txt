@@ -1,0 +1,25 @@
+<TYPE> ::= "operation" | "condition" | "input/output" | "start/stop"
+<BLOCK> ::= "block"
+<LINE> ::= "line"
+<COLOR> ::= "color"
+<TEXT> ::= "text"
+<FRAME> ::= "frame"
+<TYPE_NAME> ::= "type"
+<CONNECT> ::= "connect"
+<STRING> ::= "\"" <any_char>+ "\""
+<NAME> ::= <letter> <letter_or_digit>*
+<letter> ::= "a" | "b" | "c" | ... | "z" | "A" | "B" | "C" | ... | "Z" | "_"
+<letter_or_digit> ::= <letter> | "0" | "1" | "2" | ... | "9"
+<any_char> ::= any valid character (except `"` for simplicity)
+
+
+<input> ::= <file> <EOF>
+<file> ::= <lines> | <lines> <file>
+<lines> ::= "block" <NAME> "{" <block_content> "}" | "line" <NAME> "{" <line_content> "}"
+<block_content> ::= <block_line> | <block_line> <block_content>
+<block_line> ::= "color:" <krotka> | <TYPE_NAME> <TYPE> | "text:" <STRING> | "frame:" <krotka>
+<krotka> ::= <NUMBER> "," <NUMBER> "," <NUMBER>
+<line_content> ::= <line_line> | <line_line> <line_content>
+<line_line> ::= "color:" <krotka> | "type:" <TYPE> | "text:" <STRING> | "connect:" <connect_nt>
+<connect_nt> ::= <dowolne> ">" <NAME> | <NAME> "<" <dowolne>
+<dowolne> ::= <NAME> | <NAME> "," <dowolne>

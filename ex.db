@@ -1,0 +1,68 @@
+block start {
+    color: (255,0,0)
+    text: "start"
+    frame: (0,0,0)
+    type: start/stop
+}
+
+block dig {
+    color: (0,255,0)
+    text: "digit=4"
+    frame: (0,0,0)
+    type: operation
+}
+
+block cond {
+    color: (255,255,0)
+    text: "value >0 ?"
+    frame: (0,0,0)
+    type: condition
+}
+
+block print1 {
+    color: (0,0,255)
+    text: "PRINT("TRUE")"
+    frame: (0,0,0)
+    type: input/output
+}
+
+block print2 {
+    color: (0,0,255)
+    text: "PRINT("FALSE")"
+    frame: (0,0,0)
+    type: input/output
+}
+
+block stop {
+    color: (255,0,0)
+    text: "stop"
+    frame: (0,0,0)
+    type: start/stop
+}
+
+line start_op {
+    color: (0,0,0)
+    connect: start > dig
+}
+
+line dig_val{
+    color: (0,0,0)
+    connect: dig > cond
+}
+
+line to_print1 {
+    color: (0,0,0)
+    text:"YES"
+    connect: cond > print1
+}
+
+line to_print2 {
+    color: (0,0,0)
+    text:"NO"
+    connect: cond > print2
+}
+
+line finish {
+    color: (0,0,0)
+    connect: stop < print1, print2
+}
