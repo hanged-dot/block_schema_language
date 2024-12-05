@@ -12,14 +12,13 @@
 <letter_or_digit> ::= <letter> | "0" | "1" | "2" | ... | "9"
 <any_char> ::= any valid character (except `"` for simplicity)
 
-
 <input> ::= <file> <EOF>
 <file> ::= <lines> | <lines> <file>
-<lines> ::= "block" <NAME> "{" <block_content> "}" | "line" <NAME> "{" <line_content> "}"
+<lines> ::= <BLOCK> <NAME> "{" <block_content> "}" | <LINE> <NAME> "{" <line_content> "}" 
 <block_content> ::= <block_line> | <block_line> <block_content>
-<block_line> ::= "color:" <krotka> | <TYPE_NAME> <TYPE> | "text:" <STRING> | "frame:" <krotka>
+<block_line> ::= <COLOR> ":" <krotka> | <TYPE_NAME> ":" <TYPE> | <TEXT> ":" <STRING> | <FRAME> ":" <krotka>
 <krotka> ::= <NUMBER> "," <NUMBER> "," <NUMBER>
 <line_content> ::= <line_line> | <line_line> <line_content>
-<line_line> ::= "color:" <krotka> | "type:" <TYPE> | "text:" <STRING> | "connect:" <connect_nt>
+<line_line> ::= <COLOR> ":" <krotka> | <TYPE_NAME> ":" <TYPE> | <TEXT> ":" <STRING> | <CONNECT> ":" <connect_nt>
 <connect_nt> ::= <dowolne> ">" <NAME> | <NAME> "<" <dowolne>
 <dowolne> ::= <NAME> | <NAME> "," <dowolne>
