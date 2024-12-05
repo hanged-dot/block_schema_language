@@ -12,6 +12,8 @@
 <letter_or_digit> ::= <letter> | "0" | "1" | "2" | ... | "9"
 <any_char> ::= any valid character (except `"` for simplicity)
 
+------------------------------------------------------------------------------
+
 <input> ::= <file> <EOF>
 <file> ::= <lines> | <lines> <file>
 <lines> ::= <BLOCK> <NAME> "{" <block_content> "}" | <LINE> <NAME> "{" <line_content> "}" 
