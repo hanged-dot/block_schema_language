@@ -138,21 +138,17 @@ if __name__ == '__main__':
 
     parser.parse(lexer.tokenize(data))
 
-    # Generate DOT file
     with open("output.dot", "w") as dotfile:
         dotfile.write("digraph BlockSchema {\n")
 
-        # Write blocks
         for block in parser.blocks:
             attributes = "\n".join(f"{key}={value}" for attr in block["attributes"] for key, value in attr.items())
             dotfile.write(f"  {block['name']} [label=\"{block['name']}\n{attributes}\"];\n")
 
-        # Write lines
         for line in parser.lines:
             attributes = "\n".join(f"{key}={value}" for attr in line["attributes"] for key, value in attr.items())
             dotfile.write(f"  {line['name']} [label=\"{line['name']}\n{attributes}\"];\n")
 
-        # Write connections
         for connection in parser.connections:
             source = "_".join(connection[0])
             target = connection[2]
