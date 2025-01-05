@@ -1,0 +1,15 @@
+digraph BlockSchema {
+node [style=filled]; 
+start [shape = ellipse ,color = "#000000" ,label = "start" ,fillcolor = "#ff0000" ]; 
+dig [shape = rectangle ,color = "#000000" ,label = "digit=4" ,fillcolor = "#00ff00" ]; 
+cond [shape = diamond ,color = "#000000" ,label = "value >0 ?" ,fillcolor = "#ffff00" ]; 
+print1 [shape = parallelogram ,color = "#000000" ,label = "PRINT(\"TRUE\")" ,fillcolor = "#0000ff" ]; 
+print2 [shape = parallelogram ,color = "#000000" ,label = "PRINT(\"FALSE\")" ,fillcolor = "#0000ff" ]; 
+stop [shape = ellipse ,color = "#00c800" ,label = "stop" ,fillcolor = "#ff0000" ]; 
+start -> dig [color = "#000000" ]; 
+dig -> cond [color = "#000000" ]; 
+cond -> print1 [label = "YES" ,color = "#000000" ]; 
+cond -> print2 [label = "NO" ,color = "#000000" ]; 
+print2 -> stop [color = "#000000" ]; 
+print1 -> stop [color = "#000000" ]; 
+}

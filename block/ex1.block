@@ -36,7 +36,7 @@ block print2 {
 block stop {
     color: (255,0,0)
     text: "stop"
-    frame: (0,0,0)
+    frame: (0,200,0)
     type: start/stop
 }
 
