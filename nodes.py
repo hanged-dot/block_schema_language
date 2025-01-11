@@ -1,3 +1,6 @@
+from utils import check_if_nodes
+
+
 TYPE_DICT={
     "operation": "rectangle",
     "condition": "diamond",
@@ -10,7 +13,7 @@ class Block:
         self.name = name
         self.content = content
     
-    def to_string(self):
+    def to_string(self, nodes_list):
         return f"{self.name} [{self.content.to_string()}]; \n"
 
 
@@ -30,8 +33,11 @@ class Line:
         self.name = name 
         self.content = content
 
-    def to_string(self):
+    def to_string(self, node_list):
         s = ""
         for begin, end in self.content.keys["edge"]:
-            s+= f"{begin} -> {end} [{self.content.to_string()}]; \n"
+            if check_if_nodes(begin, end, node_list): 
+                s+= f"{begin} -> {end} [{self.content.to_string()}]; \n"
+            else:
+                break
         return s

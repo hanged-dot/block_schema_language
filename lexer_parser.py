@@ -3,6 +3,7 @@ from sly import Lexer, Parser
 from nodes import TYPE_DICT, Block, Content, Line
 from utils import fix_string, rgb_to_hex
 
+EXCEPT = False
 class BlockLexer(Lexer):
     tokens = { BLOCK, LINE, NAME, NUMBER, COLOR, TEXT, FRAME, TYPE_NAME, CONNECT, STRING, TYPE }
     ignore = ' \t'
@@ -138,10 +139,16 @@ def run_main(input, output):
         data = f.read()
         elements = parser.parse(lexer.tokenize(data))
         elements.reverse()
-        
+        nodes = [node for node in elements if isinstance(node,Block)]
+        to_write = ""
+        for elem in elements:
+                to_write+=elem.to_string(nodes)
+        if EXCEPT:
+            print(EXCEPT)
+            return False
         with open(output, 'w') as f:
             f.write("digraph BlockSchema {\n")
             f.write("node [style=filled]; \n")
-            for elem in elements:
-                f.write(elem.to_string())
+            f.write(to_write)
             f.write("}\n")
+        return True
