@@ -1,15 +1,17 @@
 # Block schema language
 
-This project is dedicated to creating a simple language dedicated to creating block schemas. The language uses the graphviz .dot language for a base model to create images of schemas.
+This project is dedicated to creating a simple language dedicated to creating block schemas. The language uses the Graphviz dot language for a base model to create images of schemas.
+
+## Requirements
+
+Make sure that you have a Graphviz program installed and `dot` is in your PATH. Install Python version above 3.9 and python dependencies listed in `requirents.txt`
 
 ## Usage 
 
 1. Create a text file, defining your schema using the grammar provided. 
 2. Run the following command:
-``` python main.py -i="your_file_with_schema.block" -o="output_file_name.dot"```.
-It is important that the output file has the .dot file extension.
-3. Run the graphviz command ```dot -Tpng output_file_name.dot -o output_file_name.png ```. You can specify any other picture format that you may need by changing the second file extension and adding it after the ```-T``` parameter. 
+` python main.py -i="your_file_with_schema.block" `.
 
-The final schema should be now in this directory. It is recommended that you use seperate subdirectories for each of the files.
+If block schema was defined correctly, the final schema should be now in `png` directory. The image should also show up on your screen.
 
-Feel free to use examples in ```block``` directory.
+Feel free to use examples in `block` directory. You can also look at a `.dot` file generated in the process.

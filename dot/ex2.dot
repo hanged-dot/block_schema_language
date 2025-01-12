@@ -1,0 +1,17 @@
+digraph BlockSchema {
+node [style=filled]; 
+start_block [shape = ellipse ,label = "def fibonaci(n)" ]; 
+print1 [shape = parallelogram ,label = "Print 0 Print 1" ,fillcolor = "#adcdd1" ]; 
+set_i [shape = rectangle ,label = "i=2" ]; 
+check_cond [shape = diamond ,label = "i<=n-1" ,fillcolor = "#534389" ]; 
+go_deeper [shape = rectangle ,label = "return fibonaci(i-1) + fibonaci(i-2) \n i+=1" ]; 
+finish [shape = parallelogram ,label = "print i+1" ]; 
+stop [shape = ellipse ,label = "stop" ]; 
+start_block -> print1 []; 
+print1 -> set_i []; 
+set_i -> check_cond []; 
+check_cond -> go_deeper [color = "#00ff00" ,label = "YES" ]; 
+go_deeper -> check_cond []; 
+check_cond -> finish [color = "#ff0000" ,label = "NO" ]; 
+finish -> stop []; 
+}

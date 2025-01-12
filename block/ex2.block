@@ -1,0 +1,68 @@
+block start_block {
+    text: "def fibonaci(n)"
+    type: start/stop
+}
+
+block print1 {
+    color: (173,205,209)
+    text: "Print 0 Print 1"
+    type: input/output
+}
+
+block set_i {
+    text: "i=2"
+    type: operation
+}
+
+block check_cond {
+    color: (83,67,137)
+    text: "i<=n-1"
+    type: condition
+}
+
+block go_deeper {
+    text: "return fibonaci(i-1) + fibonaci(i-2) \n i+=1"
+    type: operation
+}
+
+block finish {
+    text: "print i+1"
+    type: input/output
+}
+
+block stop {
+    text: "stop"
+    type: start/stop
+}
+
+line start_run {
+    connect: start_block > print1
+}
+
+line set {
+    connect: print1 > set_i
+}
+
+line check {
+    connect: set_i > check_cond
+}
+
+line yes {
+    text: "YES"
+    color: (0,255,0)
+    connect: check_cond > go_deeper
+}
+
+line go_back {
+    connect: go_deeper > check_cond
+}
+
+line no {
+    text: "NO"
+    color: (255,0,0)
+    connect: check_cond > finish
+}
+
+line fin {
+    connect: finish > stop
+}
